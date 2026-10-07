@@ -20,8 +20,13 @@ public:
     bool collidePolygon(const Polygon& other, Vec2* mtvOut = nullptr) const;
     Vec2 centroid() const;
 
-    void moveTo(const Vec2& dest);
+    // linear movement
     void moveBy(const Vec2& dv);
+    void moveTo(const Vec2& dest);
+
+    // angular movement
+    void rotateBy(float da);
+    void rotateTo(float dest);
 
     // attrs
     std::vector<Vec2> vertices;

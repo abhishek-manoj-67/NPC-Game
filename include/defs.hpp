@@ -2,9 +2,12 @@
 
 inline constexpr int WINWIDTH = 800;
 inline constexpr int WINHEIGHT = 600;
+inline constexpr int FPS = 60;
 inline constexpr uint32_t RED = 0xff0000ff;
 inline constexpr uint32_t GREEN = 0x00ff00ff;
 inline constexpr uint32_t BLUE = 0x0000ffff;
+
+inline constexpr float PI = 3.141592653589793;
 
 inline uint8_t r(uint32_t color) {
 

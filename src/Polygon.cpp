@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <algorithm>
+#include <cmath>
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
@@ -155,6 +156,14 @@ Vec2 Polygon::centroid() const {
 
 }
 
+void Polygon::moveBy(const Vec2 &dv) {
+
+    for (Vec2& v : vertices) {
+        v += dv;
+    }
+
+}
+
 void Polygon::moveTo(const Vec2 &dest) {
 
     Vec2 difference = dest - centroid();
@@ -165,10 +174,52 @@ void Polygon::moveTo(const Vec2 &dest) {
 
 }
 
-void Polygon::moveBy(const Vec2 &dv) {
+void Polygon::rotateBy(float da) {
+
+    Vec2 centr = centroid();
 
     for (Vec2& v : vertices) {
-        v += dv;
+
+        float x = v.x - centr.x;
+        float y = v.y - centr.y;
+
+        float xNew = x * std::cos(da) - y * std::sin(da);
+        float yNew = x * std::sin(da) + y * std::cos(da);
+
+        xNew += centr.x;
+        yNew += centr.y;
+
+        v = Vec2(xNew, yNew);
+
     }
 
+    angle += da;
+    angle = std::fmod(angle, 2 * PI);
+    
+}
+
+void Polygon::rotateTo(float dest) {
+
+    Vec2 centr = centroid();
+
+    float da = dest - angle;
+
+    for (Vec2& v : vertices) {
+
+        float x = v.x - centr.x;
+        float y = v.y - centr.y;
+
+        float xNew = x * std::cos(da) - y * std::sin(da);
+        float yNew = x * std::sin(da) + y * std::cos(da);
+
+        xNew += centr.x;
+        yNew += centr.y;
+
+        v = Vec2(xNew, yNew);
+
+    }
+
+    angle += da;
+    angle = std::fmod(angle, 2 * PI);
+    
 }
