@@ -10,13 +10,13 @@
 #include "Vec2.hpp"
 #include "Polygon.hpp"
 
-Entity::Entity(const Vec2& p, const Vec2& s, float m) {
+// Entity::Entity(const Vec2& p, const Vec2& s, float m) {
 
-    pos = p;
-    size = s;
-    mass = m;
+//     pos = p;
+//     size = s;
+//     mass = m;
 
-}
+// }
 
 void Entity::update(float dt) {
 

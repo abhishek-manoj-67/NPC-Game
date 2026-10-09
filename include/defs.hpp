@@ -9,6 +9,14 @@ inline constexpr uint32_t BLUE = 0x0000ffff;
 
 inline constexpr float PI = 3.141592653589793;
 
+inline int8_t sign(long double x) {
+	if (x == 0) {
+		return 0;
+	}
+
+	return abs(x) / x;
+} 
+
 inline uint8_t r(uint32_t color) {
 
 	return (color >> 24) & 0xff;

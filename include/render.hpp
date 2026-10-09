@@ -20,10 +20,11 @@ void renderPolygon(SDL_Renderer* ren, const Polygon& poly, uint32_t color) {
 
     std::vector<SDL_Vertex> vertices(verts);
 	for (int i = 0; i < verts; i++) {
+
 		vertices[i].position.x = poly.vertices[i].x;
 		vertices[i].position.y = poly.vertices[i].y;
-		vertices[i].color.r = r(color); vertices[i].color.g = g(color);
-		vertices[i].color.b = b(color); vertices[i].color.a = a(color);
+		vertices[i].color.r = r(color) / 255.0f; vertices[i].color.g = g(color) / 255.0f;
+		vertices[i].color.b = b(color) / 255.0f; vertices[i].color.a = a(color) / 255.0f;
 	}
 
 	int inds = (verts - 2) * 3;

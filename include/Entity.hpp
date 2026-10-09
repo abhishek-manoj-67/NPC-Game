@@ -21,7 +21,16 @@ protected:
 
 public:
     // constructor
-    Entity(const Vec2& p, const Vec2& s, float m = 1);
+    Entity(const Vec2& p, const Vec2& s, float m = 1) : pos(p), 
+                                                        size(s), 
+                                                        hitbox(Polygon({
+                                                                        p, 
+                                                                        Vec2(p.x + s.x, p.y), 
+                                                                        Vec2(p.x + s.x, p.y + s.y), 
+                                                                        Vec2(p.x, p.y + s.y)})) 
+                                                        {
+                                                            
+                                                        }
     
     // methods
     void update(float dt); // update
@@ -31,6 +40,8 @@ public:
     void addForce(const Vec2& force);
 
     // attrs
+    Polygon hitbox;
+
     float mass;
     Vec2 pos;
     Vec2 size;
